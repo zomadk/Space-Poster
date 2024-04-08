@@ -16,6 +16,9 @@ let i = 0;
 let shape;
 let fullbg;
 let tintVal = 180;
+let p = 10;
+let hit = false;
+let fadeOff = false;
 
 
 
@@ -25,24 +28,7 @@ var shift = {x: 50, y: 100}
 
 function preload(){
 
-    borderBG = loadImage('../images/white.jpg') //back
     redrawBG = loadImage('../images/fullbg2.png') //front
-
-   // maskImage = loadImage('../images/mask.png')
-
-    boldfont = loadFont('fonts/tbf.otf')
-    //borderBG = loadImage()
-    blurA1 =  loadImage('../images/blankfollow.png')
-    blurM1 =  loadImage('../images/mw-blur.png')
-    blurM2 =  loadImage('../images/mw-blur.png')
-    blurM3 =  loadImage('../images/mw-blur.png')
-    blurM4 =  loadImage('../images/mw-blur.png')
-    blurM5 =  loadImage('../images/mw-blur.png')
-    blurZ =  loadImage('../images/blankfollow.png')
-    blurP =  loadImage('../images/blankfollow.png')
-
-
-
 }
 
 function setup(){
@@ -77,31 +63,11 @@ function setup(){
     spText.textSize = 100
     textFont(boldfont)    */
   
-    //imageMode(CORNER)
     borderCollider = new Sprite([[57, 545], [66, 675], [120, 792], [233, 923], [421, 1012], [585, 1031],[739,981],[864, 897],[920, 836],[965, 784],[1013, 639],[1029, 506],[998, 365],[910, 227],[790, 122],[640, 62],[491, 57],[320, 104],[195, 195],[110, 317],[61, 435],[57, 537]]);
     borderCollider.collider = 'static';
     borderCollider.color = color(255,0)
     borderCollider.scale = 0.98
     borderCollider.position = createVector(195, 545)
-
-    /*smallBorder = new Sprite([[222, 860],[286, 877],[347, 926],[368, 1004],[345, 1076],[295, 1124],[237, 1146],[167, 1139],[110, 1091],[79, 1020],[95, 932],[143, 881],[216, 858]])
-    smallBorder.collider = 'static'
-    smallBorder.color = color(0, 0)
-    
-    
-
-   /* space = new Sprite()
-    space.img = '../images/space-b.png'
-    space.position = createVector(200, 1000)
-    space.vel.x = .5;
-    space.vel.y = 0;
-    space.bounciness = 0.7;
-    space.width = 220;
-    space.height = 50;
-    space.friction = 3;
-    //space.debug = true;
-    space.rotationLock = true;
-    //space.filter = filter(BLUR, 20)*/
 
     zoma = new Sprite()
     zoma.img = '../images/zoma-bl.png'
@@ -165,29 +131,9 @@ function setup(){
 
     imageMode(CORNER)
 
-    
-   /* if (maskResult){
-        maskImage.clear();
-
-        maskImage.ellipse(500, 500, 100, 100);
-        maskResult.copy(
-            borderBG,
-            0, 0, borderBG.width, borderBG.height,
-            0, 0, borderBG.width, borderBG.height,
-        )
-        maskResult.mask(maskImage)
-    }
- image(redrawBG, 0, 0)*    image(maskResult, 0, 0); */
-
 }
 
-let p = 10;
-let hit = false;
-let fadeOff = false;
 
-function opacity(){
-
-}
 
 function draw(){
 
@@ -222,7 +168,6 @@ if (zoma.collided(aj) || aj.collided(pira)|| aj.collided(mw)){
     hit = true;
 
 }
-
 
 
 if (hit == true){
@@ -269,9 +214,7 @@ if(tintVal < 180){
     if (pira.collides(borderCollider)){
         pira.img = '../images/pira-wl.png'
     }  
-    /*if (space.collides(smallBorder)){
-        space.img = '../images/space-w.png'  
-    }  */
+
 
 
     if (floor(millis()) % 1000 >= 0 && floor(millis()) % 1000 <= 50) {
